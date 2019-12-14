@@ -11,16 +11,26 @@
     - linux-headers-amd64
     - dkms
 
+      #- name: set facts
+      #  set_fact:
+      #    deb: 'realtek-rtl88xxau-dkms_5.2.20.2~20190210-0kali1_all.deb'
+      #    hash: 'sha256:47e7c0e06fea088ec9ee83ad2f434d2799c28ae5052edc0cafc83b77b06d734e'
+
+- name: set facts
+  set_fact:
+    deb: 'realtek-rtl88xxau-dkms_5.2.20.2~20190617-0kali1_all.deb'
+    hash: 'sha256:83e90bf5411b219d7af8844ca2395c053b07ee88c781d8b1835772c95298517c'
+
 - name: download rtl8812au-dkms deb
   get_url:
-    url: http://http.kali.org/pool/contrib/r/realtek-rtl88xxau-dkms/realtek-rtl88xxau-dkms_5.2.20.2~20190210-0kali1_all.deb
-    dest: /root/realtek-rtl88xxau-dkms_5.2.20.2~20190210-0kali1_all.deb
+    url: "http://http.kali.org/pool/contrib/r/realtek-rtl88xxau-dkms/{{ deb }}"
+    dest: "/root/{{ deb }}"
     mode: 0644
-    checksum: sha256:47e7c0e06fea088ec9ee83ad2f434d2799c28ae5052edc0cafc83b77b06d734e
+    checksum: "{{ hash }}"
 
 - name: Install rtl8812au package
   apt:
-    deb="/root/realtek-rtl88xxau-dkms_5.2.20.2~20190210-0kali1_all.deb"
+    deb="/root/{{ deb }}"
     state="present"
     update_cache=True
     install_recommends=False
