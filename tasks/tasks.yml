@@ -26,10 +26,15 @@
       #    deb: 'realtek-rtl88xxau-dkms_5.3.4~20191031-0kali1_all.deb'
       #    hash: 'sha256:3bf7dce995c09ca1814479aaf644d17f24cd327ee27712205a02f080a2046c42'
 
+      #- name: set facts
+      # set_fact:
+      #   deb: 'realtek-rtl88xxau-dkms_5.3.4~20200115-0kali1_all.deb'
+      #   hash: 'sha256:5ca9f94d696f85109659feb67042eb483e9007333f61a3ee08cf1f2cde24aa56'
+
 - name: set facts
   set_fact:
-    deb: 'realtek-rtl88xxau-dkms_5.3.4~20200115-0kali1_all.deb'
-    hash: 'sha256:5ca9f94d696f85109659feb67042eb483e9007333f61a3ee08cf1f2cde24aa56'
+    deb: 'realtek-rtl88xxau-dkms_5.6.4.2~git20200916-0kali1_all.deb'
+    hash: 'sha256:f5837e4b4e057bff7a145e346e386c4144d69eecf0e419131c8e941459c58c55'
 
 - name: download rtl8812au-dkms deb
   get_url:
